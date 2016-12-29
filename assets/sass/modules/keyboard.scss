@@ -1,7 +1,7 @@
 .keyboard {
     color: #333;
 
-    $key-width: 15vw;
+    $key-width: 12vw;
 
     &__key-list {
         display: flex;
@@ -12,10 +12,11 @@
         display: block;
         width: $key-width;
         height: 20vw;
+        line-height: 20vw;
         text-transform: uppercase;
 
         text-align: center;
-        font-size: 9rem;
+        font-size: 7rem;
         
         &:active {
             background: palegreen;
@@ -27,7 +28,12 @@
         }
 
         &--delete {
-            background: red;
+            background: white;
+
+            border-width: 9.5vh 10vh 9.5vh 0;
+            border-color: transparent darkred transparent;
+            border-style: solid;
+            box-sizing: border-box;
         }
     }
 }

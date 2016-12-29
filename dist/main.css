@@ -420,7 +420,8 @@ template {
   background: #f3f3f3;
   font-size: 7rem;
   padding: .3rem 1rem;
-  line-height: 10rem; }
+  line-height: 10rem;
+  white-space: nowrap; }
 
 .keyboard {
   color: #333; }
@@ -429,17 +430,22 @@ template {
     flex-wrap: wrap; }
   .keyboard__key {
     display: block;
-    width: 15vw;
+    width: 12vw;
     height: 20vw;
+    line-height: 20vw;
     text-transform: uppercase;
     text-align: center;
-    font-size: 9rem; }
+    font-size: 7rem; }
     .keyboard__key:active {
       background: palegreen; }
     .keyboard__key--space {
       background: #f4f4f4;
-      width: 30vw; }
+      width: 24vw; }
     .keyboard__key--delete {
-      background: red; }
+      background: white;
+      border-width: 9.5vh 10vh 9.5vh 0;
+      border-color: transparent darkred transparent;
+      border-style: solid;
+      box-sizing: border-box; }
 
 /*# sourceMappingURL=main.css.map*/
