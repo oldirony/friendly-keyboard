@@ -72,12 +72,20 @@
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_keyboard__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_display__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
 
 
 
-const keyBoardElement = __WEBPACK_IMPORTED_MODULE_1_jquery___default()('.keyboard');
+
+const displayElement = __WEBPACK_IMPORTED_MODULE_2_jquery___default()('.display');
+if(displayElement.length){
+    new __WEBPACK_IMPORTED_MODULE_1__modules_display__["a" /* default */](displayElement);
+}
+
+
+const keyBoardElement = __WEBPACK_IMPORTED_MODULE_2_jquery___default()('.keyboard');
 if(keyBoardElement.length){
     new __WEBPACK_IMPORTED_MODULE_0__modules_keyboard__["a" /* default */](keyBoardElement);
 }
@@ -103,6 +111,8 @@ module.exports = __webpack_require__(1);
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(5);
+
 
 const alphabet = ['a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','z'];
 
@@ -110,15 +120,30 @@ class Keyboard {
     constructor(elem) {
         this.elem = elem;
         this.init();
+        this.attachListeners();
     }
 
     init() {
-
+        // add key list
         this.keyList = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="keyboard__key-list"></div>').appendTo(this.elem);
 
-        const keyList = alphabet.map(letter => `<div class="keyboard__key">${letter}</div>`);
-
+        // add keys
+        const keyList = alphabet.map(letter => `<div class="keyboard__key" data-js-key>${letter}</div>`);
+        keyList.push(`<div class="keyboard__key keyboard__key--space" data-js-space-bar></div>`);
+        keyList.push(`<div class="keyboard__key keyboard__key--delete" data-js-delete-key></div>`);
         this.keyList.append(keyList.join(''));
+    }
+
+    attachListeners() {
+        this.elem.on('click', '[data-js-key]', event => {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).trigger(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].eventNames.keyPress, {letterVal : event.currentTarget.innerHTML});
+        });
+        this.elem.on('click', '[data-js-space-bar]', () => {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).trigger(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].eventNames.keyPress, {spaceBarVal : true});
+        });
+        this.elem.on('click', '[data-js-delete-key]', () => {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).trigger(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].eventNames.keyPress, {removeLetter : true});
+        });
     }
 }
 
@@ -10350,6 +10375,60 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+const config = {
+    eventNames : {
+        keyPress : 'fk-key-press'
+    }
+};
+
+/* harmony default export */ exports["a"] = config;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(5);
+
+
+
+class Display {
+    constructor(elem) {
+        this.elem = elem;
+        this.listenEvent();
+    }
+
+    listenEvent() {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].eventNames.keyPress, (event, attachments) => {
+            if(attachments.letterVal){
+                this.addLetterToContent(attachments.letterVal);
+            } else if(attachments.spaceBarVal) {
+                this.addLetterToContent(' ');
+            } else if(attachments.removeLetter) {
+                this.removeLetter();
+            }
+        });
+    }
+
+    addLetterToContent(letter) {
+        this.elem.text(this.elem.text() + letter);
+    }
+
+    removeLetter() {
+        this.elem.text(this.elem.text().slice(0,-1));
+    }
+}
+
+
+/* harmony default export */ exports["a"] = Display;
 
 /***/ }
 /******/ ]);

@@ -1,4 +1,8 @@
 .keyboard {
+    color: #333;
+
+    $key-width: 15vw;
+
     &__key-list {
         display: flex;
         flex-wrap: wrap;
@@ -6,11 +10,24 @@
 
     &__key {
         display: block;
-        width: 19.5vw;
+        width: $key-width;
         height: 20vw;
         text-transform: uppercase;
 
         text-align: center;
         font-size: 9rem;
+        
+        &:active {
+            background: palegreen;
+        }
+        
+        &--space {
+            background: #f4f4f4;
+            width: $key-width * 2;
+        }
+
+        &--delete {
+            background: red;
+        }
     }
 }

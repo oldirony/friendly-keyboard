@@ -417,18 +417,29 @@ template {
 
 .display {
   height: 10rem;
-  background: #f3f3f3; }
+  background: #f3f3f3;
+  font-size: 7rem;
+  padding: .3rem 1rem;
+  line-height: 10rem; }
 
-.keyboard__key-list {
-  display: flex;
-  flex-wrap: wrap; }
-
-.keyboard__key {
-  display: block;
-  width: 19.5vw;
-  height: 20vw;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 9rem; }
+.keyboard {
+  color: #333; }
+  .keyboard__key-list {
+    display: flex;
+    flex-wrap: wrap; }
+  .keyboard__key {
+    display: block;
+    width: 15vw;
+    height: 20vw;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 9rem; }
+    .keyboard__key:active {
+      background: palegreen; }
+    .keyboard__key--space {
+      background: #f4f4f4;
+      width: 30vw; }
+    .keyboard__key--delete {
+      background: red; }
 
 /*# sourceMappingURL=main.css.map*/
