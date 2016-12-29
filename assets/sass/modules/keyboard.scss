@@ -1,0 +1,16 @@
+.keyboard {
+    &__key-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__key {
+        display: block;
+        width: 19.5vw;
+        height: 20vw;
+        text-transform: uppercase;
+
+        text-align: center;
+        font-size: 9rem;
+    }
+}
