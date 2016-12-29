@@ -421,7 +421,8 @@ template {
   font-size: 7rem;
   padding: .3rem 1rem;
   line-height: 10rem;
-  white-space: nowrap; }
+  white-space: nowrap;
+  color: firebrick; }
 
 .keyboard {
   color: #333; }
@@ -431,15 +432,15 @@ template {
   .keyboard__key {
     display: block;
     width: 12vw;
-    height: 20vw;
-    line-height: 20vw;
+    height: 150px;
+    line-height: 150px;
     text-transform: uppercase;
     text-align: center;
     font-size: 7rem; }
     .keyboard__key:active {
       background: palegreen; }
     .keyboard__key--space {
-      background: #f4f4f4;
+      background: #eee;
       width: 24vw; }
     .keyboard__key--delete {
       background: white;
@@ -447,5 +448,14 @@ template {
       border-color: transparent darkred transparent;
       border-style: solid;
       box-sizing: border-box; }
+  .keyboard * {
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */ }
 
 /*# sourceMappingURL=main.css.map*/

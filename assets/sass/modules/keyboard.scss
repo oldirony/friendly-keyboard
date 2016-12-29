@@ -2,6 +2,7 @@
     color: #333;
 
     $key-width: 12vw;
+    $key-height: 150px;
 
     &__key-list {
         display: flex;
@@ -11,8 +12,8 @@
     &__key {
         display: block;
         width: $key-width;
-        height: 20vw;
-        line-height: 20vw;
+        height: $key-height;
+        line-height: $key-height;
         text-transform: uppercase;
 
         text-align: center;
@@ -23,7 +24,7 @@
         }
         
         &--space {
-            background: #f4f4f4;
+            background: #eee;
             width: $key-width * 2;
         }
 
@@ -35,5 +36,12 @@
             border-style: solid;
             box-sizing: border-box;
         }
+    }
+
+    * {
+        -webkit-user-select: none;  /* Chrome all / Safari all */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
     }
 }

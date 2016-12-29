@@ -12,3 +12,8 @@ const keyBoardElement = $('.keyboard');
 if(keyBoardElement.length){
     new Keyboard(keyBoardElement);
 }
+
+
+if(navigator.userAgent.match(/Android/i)){
+    window.scrollTo(0,1);
+}
