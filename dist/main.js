@@ -90,11 +90,6 @@ if(keyBoardElement.length){
     new __WEBPACK_IMPORTED_MODULE_0__modules_keyboard__["a" /* default */](keyBoardElement);
 }
 
-
-if(navigator.userAgent.match(/Android/i)){
-    window.scrollTo(0,1);
-}
-
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
