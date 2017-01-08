@@ -1,5 +1,6 @@
 import Keyboard from './modules/keyboard';
 import Display from './modules/display';
+// TODO refactor removing jquery dependency
 import $ from 'jquery';
 
 const displayElement = $('.display');

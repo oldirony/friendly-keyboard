@@ -1,5 +1,8 @@
 import $ from 'jquery';
 import config from './config';
+
+// these are the most common letters in the Italian alphabet
+// TODO create an object to choose between languages
 const alphabet = ['a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','z'];
 
 class Keyboard {
